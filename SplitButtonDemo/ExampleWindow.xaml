@@ -1,0 +1,46 @@
+﻿<Window x:Class="SplitButtonDemo.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cc="http://schemas.sheva.com/wpf"
+    Title="SplitButtonDemo" Height="150" Width="200"    
+    >
+  <x:Code>
+    <![CDATA[
+
+      private void MenuItem_Click(Object sender, RoutedEventArgs e)
+      {
+          MessageBox.Show("MenuItem is clicked");
+      }
+      
+      private void SplitButton_Click(Object sender, RoutedEventArgs e)
+      {
+          MessageBox.Show("SplitButton is clicked");
+      }
+    ]]>
+  </x:Code>
+    <StackPanel Height="30"  Orientation="Horizontal">
+      <StackPanel.Background>
+          <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+              <GradientStop Color="#ddddee" Offset="0"/>
+              <GradientStop Color="#ccccdd" Offset="1"/>
+          </LinearGradientBrush>
+      </StackPanel.Background>
+        <cc:SplitButton Header="_SplitButton" Height="30"  Width="100" CornerRadius="0"
+                    ButtonClick="SplitButton_Click" MenuItem.Click="MenuItem_Click">
+            <cc:SplitButton.Style>
+                <Style>
+                    <Setter Property="cc:SplitButton.Background" Value="Transparent" />
+                    <Setter Property="cc:SplitButton.BorderBrush" Value="Transparent" />
+                    <Style.Triggers>
+                        <Trigger Property="cc:SplitButton.IsMouseOver" Value="True">
+                            <Setter Property="cc:SplitButton.Background" Value="Red" />
+                            <Setter Property="cc:SplitButton.BorderBrush" Value="Yellow" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </cc:SplitButton.Style>
+      <MenuItem Header="Item1"/>
+      <MenuItem Header="Item2"/>            
+    </cc:SplitButton>
+  </StackPanel>
+</Window>
